@@ -22,7 +22,7 @@ def add_event(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            messages.success(request, "Event Successfully Created")
+            messages.success(request, "Event Created Successfully")
     else:
         form = EventForm()
 
@@ -43,7 +43,7 @@ def like(request):
         if event.is_liked.filter(id=request.user.id).exists():
             event.is_liked.remove(request.user)
             event.save()
-            result = 'unlike'
+            result = 'dislike'
         else:
             event.is_liked.add(request.user)
             event.save()
