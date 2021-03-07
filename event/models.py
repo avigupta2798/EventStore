@@ -5,8 +5,9 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Event(models.Model):
+    id = models.AutoField(primary_key=True)
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    picture = models.ImageField(upload_to='images/', null=True, blank=True)
+    picture = models.ImageField(upload_to='', null=True, blank=True)
     title = models.CharField(max_length=250, null = True)
     content_text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)

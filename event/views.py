@@ -38,7 +38,7 @@ def like(request):
     if request.POST.get('action') == 'post':
         result = ''
         id = int(request.POST.get('id'))
-        event = get_object_or_404(eventlist, id=id)
+        event = get_object_or_404(Event, id=id)
         print(event)
         if event.is_liked.filter(id=request.user.id).exists():
             event.is_liked.remove(request.user)
